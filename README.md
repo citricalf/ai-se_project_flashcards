@@ -5,3 +5,7 @@ My first project in TripleTen's AI-Assisted Software Engineering program. It inc
 ## Features
 
 ## Technologies Used
+
+## Deployed Site
+
+Check out [this site](https://citricalf.github.io/ai-se_project_flashcards) on GitHub Pages.
