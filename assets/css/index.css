@@ -1,0 +1,22 @@
+@import url("../vendor/normalize.css");
+@import url("./page.css");
+@import url("./header.css");
+@import url("./footer.css");
+@import url("./nav.css");
+@import url("./wrapping-row.css");
+@import url("./decks.css");
+@import url("./deck.css");
+@import url("./carousel.css");
+@import url("./card.css");
+
+* {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
