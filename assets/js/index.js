@@ -12,29 +12,29 @@ function renderHomeView() {
   notFoundSection.style.display = "none";
 
   const deckTemplateEl = document.querySelector("#deck-template");
-  const deckContainerEl = document.querySelector(".decks__list");
+  const deckContainerEl = document.querySelector(".gallery__list");
   deckContainerEl.innerHTML = "";
 
   function createDeckEl(item) {
     const cloneEl = deckTemplateEl.content.querySelector("li").cloneNode(true);
 
-    const deckTitleEl = cloneEl.querySelector(".deck__title");
+    const deckTitleEl = cloneEl.querySelector(".card__title");
     deckTitleEl.textContent = item.name;
 
     removeColorClasses(cloneEl);
 
     const deckColorEl = hexToString(item.color);
-    cloneEl.classList.add(`deck_color_${deckColorEl}`);
+    cloneEl.classList.add(`card_color_${deckColorEl}`);
 
-    const deckCountEl = cloneEl.querySelector(".deck__count");
+    const deckCountEl = cloneEl.querySelector(".card__count");
     deckCountEl.textContent = `${item.cards.length} cards`;
 
-    const deckLinkEl = cloneEl.querySelector(".deck__link");
+    const deckLinkEl = cloneEl.querySelector(".card__link");
     deckLinkEl.addEventListener("click", () => {
       deckLinkEl.href = `#carousel/${item.id}`;
     });
 
-    const deleteDeck = cloneEl.querySelector(".deck__delete-btn");
+    const deleteDeck = cloneEl.querySelector(".card__delete-btn");
     deleteDeck.addEventListener("click", () => {
       cloneEl.remove();
     });
