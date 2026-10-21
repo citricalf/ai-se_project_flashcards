@@ -51,20 +51,20 @@
         </div>
       </section>
 
-      <!-- Section markup -->
       <section id="deck-view" class="gallery">
-        <div>
+        <div class="gallery__header">
           <h2 class="gallery__title"></h2>
-          <div class="wrapping-row">
-            <ul class="gallery__list wrapping-row__display-contents"></ul>
-            <button
-              class="gallery__practice-btn"
-              aria-label="Create new deck"
-              type="button"
-            >
-              Practice
-            </button>
-          </div>
+          <button class="gallery__practice-btn" type="button">Practice</button>
+        </div>
+        <div class="wrapping-row">
+          <ul class="gallery__list wrapping-row__display-contents"></ul>
+          <button
+            class="gallery__new-card-btn"
+            aria-label="Create new card"
+            type="button"
+          >
+            + New Card
+          </button>
         </div>
       </section>
 
@@ -122,13 +122,15 @@
       <li class="card card_color_green">
         <h3 class="card__title"></h3>
         <div class="card__row">
-          <button class="card" aria-label="Deck view"></button>
+          <button class="card__flip-btn" aria-label="Flip card" type="button">
+            <img src="./assets/images/flip.svg" alt="" />
+          </button>
           <button
             class="card__delete-btn"
-            aria-label="Delete this deck"
+            aria-label="Delete card"
             type="button"
           >
-            <img src="./assets/images/delete.svg" alt="Delete icon" />
+            <img src="./assets/images/delete.svg" alt="" />
           </button>
         </div>
       </li>

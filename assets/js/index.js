@@ -1,18 +1,25 @@
 import { decks, getDeckByID } from "./decks.js";
-import { stringToHex, hexToString, removeColorClasses } from "./colors.js";
+import { hexToString, removeColorClasses } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
+import { renderDeckView } from "./deck-view.js";
 
 const homeSection = document.querySelector("#home");
+const deckViewSection = document.querySelector("#deck-view");
 const carouselSection = document.querySelector("#carousel");
 const notFoundSection = document.querySelector("#not-found");
+const page = document.querySelector(".page__main-content");
+const practiceButton = deckViewSection.querySelector(".gallery__practice-btn");
+let currentDeck = null;
+
+practiceButton.addEventListener("click", () => {
+  if (currentDeck) {
+    window.location.hash = `#carousel/${currentDeck.id}`;
+  }
+});
 
 function renderHomeView() {
-  homeSection.style.display = "block";
-  carouselSection.style.display = "none";
-  notFoundSection.style.display = "none";
-
   const deckTemplateEl = document.querySelector("#deck-template");
-  const deckContainerEl = document.querySelector(".gallery__list");
+  const deckContainerEl = homeSection.querySelector(".gallery__list");
   deckContainerEl.innerHTML = "";
 
   function createDeckEl(item) {
@@ -30,8 +37,9 @@ function renderHomeView() {
     deckCountEl.textContent = `${item.cards.length} cards`;
 
     const deckLinkEl = cloneEl.querySelector(".card__link");
+    deckLinkEl.href = `#deck/${item.id}`;
     deckLinkEl.addEventListener("click", () => {
-      deckLinkEl.href = `#carousel/${item.id}`;
+      currentDeck = item;
     });
 
     const deleteDeck = cloneEl.querySelector(".card__delete-btn");
@@ -51,32 +59,54 @@ function renderHomeView() {
 }
 
 function renderNotFoundView() {
-  homeSection.style.display = "none";
-  carouselSection.style.display = "none";
   notFoundSection.style.display = "flex";
 }
 
 function router() {
   const hash = window.location.hash.slice(1) || "home";
-  const page = document.querySelector(".page__main-content");
+  const routeMatch = hash.match(/^(deck|carousel)\/([^/]+)$/);
 
   if (hash === "home" || hash === "") {
-    page.classList.remove(".page__main-content_location_carousel");
+    page.classList.remove("page__main-content_location_carousel");
+    homeSection.style.display = "block";
+    deckViewSection.style.display = "none";
+    carouselSection.style.display = "none";
+    notFoundSection.style.display = "none";
     renderHomeView();
-  } else if (hash.startsWith("carousel/")) {
-    // get deck ID after 'carousel/'
-    const deckID = hash.split("/")[1];
+  } else if (routeMatch) {
+    const [, route, deckID] = routeMatch;
+    const deck = getDeckByID(deckID);
 
-    // add carousel class when rendering view, remove when on other views
-    page.classList.add(".page__main-content_location_carousel");
+    if (!deck) {
+      homeSection.style.display = "none";
+      deckViewSection.style.display = "none";
+      carouselSection.style.display = "none";
+      renderNotFoundView();
+      page.classList.remove("page__main-content_location_carousel");
+      return;
+    }
 
-    homeSection.style.display = "none";
-    carouselSection.style.display = "flex";
+    currentDeck = deck;
     notFoundSection.style.display = "none";
 
-    renderCarouselView(getDeckByID(deckID));
+    if (route === "deck") {
+      page.classList.remove("page__main-content_location_carousel");
+      homeSection.style.display = "none";
+      deckViewSection.style.display = "block";
+      carouselSection.style.display = "none";
+      renderDeckView(deck);
+    } else {
+      page.classList.add("page__main-content_location_carousel");
+      homeSection.style.display = "none";
+      deckViewSection.style.display = "none";
+      carouselSection.style.display = "flex";
+      renderCarouselView(deck);
+    }
   } else {
-    page.classList.remove(".page__main-content_location_carousel");
+    homeSection.style.display = "none";
+    deckViewSection.style.display = "none";
+    carouselSection.style.display = "none";
+    page.classList.remove("page__main-content_location_carousel");
     renderNotFoundView();
   }
 }

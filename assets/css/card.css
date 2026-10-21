@@ -22,6 +22,7 @@
   line-height: 1.2;
   margin: 0;
   padding: 0;
+  overflow-wrap: anywhere;
 }
 
 .card__row {
@@ -38,12 +39,16 @@
   padding: 0;
 }
 
+.card__flip-btn,
 .card__delete-btn {
   padding: 0;
   opacity: 50%;
   z-index: 2;
+  display: flex;
+  align-items: center;
 }
 
+.card__flip-btn:hover,
 .card__delete-btn:hover {
   opacity: 100%;
 }
@@ -70,6 +75,10 @@
 
 .card_color_yellow {
   background-color: #f5d770;
+}
+
+.card_color_white {
+  background-color: #fff;
 }
 
 .card__carousel_color_green {

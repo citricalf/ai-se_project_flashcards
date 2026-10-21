@@ -55,26 +55,26 @@ function renderCarouselView(deck) {
     }
   }
 
-  rightBtn.addEventListener("click", () => {
+  rightBtn.onclick = () => {
     if (currentIndex < deck.cards.length - 1) {
       currentIndex++;
       showingQuestion = true;
       updateDisplay();
     }
-  });
+  };
 
-  leftBtn.addEventListener("click", () => {
+  leftBtn.onclick = () => {
     if (currentIndex > 0) {
       currentIndex--;
       showingQuestion = true;
       updateDisplay();
     }
-  });
+  };
 
-  flipBtn.addEventListener("click", () => {
+  flipBtn.onclick = () => {
     showingQuestion = !showingQuestion;
     updateDisplay();
-  });
+  };
 
   updateDisplay();
 }
