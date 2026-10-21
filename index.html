@@ -51,6 +51,23 @@
         </div>
       </section>
 
+      <!-- Section markup -->
+      <section id="deck-view" class="gallery">
+        <div>
+          <h2 class="gallery__title"></h2>
+          <div class="wrapping-row">
+            <ul class="gallery__list wrapping-row__display-contents"></ul>
+            <button
+              class="gallery__practice-btn"
+              aria-label="Create new deck"
+              type="button"
+            >
+              Practice
+            </button>
+          </div>
+        </div>
+      </section>
+
       <section id="carousel" class="carousel">
         <h2 class="carousel__title">
           Some Deck &middot; Current card/Total cards
@@ -98,6 +115,22 @@
           </button>
         </div>
         <a class="card__link" href="#"></a>
+      </li>
+    </template>
+
+    <template id="card-template">
+      <li class="card card_color_green">
+        <h3 class="card__title"></h3>
+        <div class="card__row">
+          <button class="card" aria-label="Deck view"></button>
+          <button
+            class="card__delete-btn"
+            aria-label="Delete this deck"
+            type="button"
+          >
+            <img src="./assets/images/delete.svg" alt="Delete icon" />
+          </button>
+        </div>
       </li>
     </template>
   </body>
