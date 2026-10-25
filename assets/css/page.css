@@ -1,23 +1,32 @@
 .page {
-  background-color: #ececec;
   font-family: Inter, Arial, Helvetica, sans-serif;
-  padding: 20px 40px 32px;
+  color: #1a1a1a;
+  background-color: #ececec;
   max-width: 1440px;
+  padding: 20px 40px 32px;
+  min-height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  box-sizing: border-box;
 }
 
 .page__main-content {
-  margin-top: 60px;
   flex-grow: 1;
-  margin-bottom: 138px;
 }
 
 .page__main-content_location_carousel {
   display: flex;
   justify-content: center;
   margin-top: 106px;
+}
+
+@media screen and (max-width: 600px) {
+  .page {
+    padding: 20px 20px 32px;
+  }
+  .page__main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }

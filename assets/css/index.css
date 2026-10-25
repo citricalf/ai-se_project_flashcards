@@ -1,4 +1,5 @@
 @import url("../vendor/normalize.css");
+@import url("./style.css");
 @import url("./page.css");
 @import url("./header.css");
 @import url("./footer.css");
@@ -7,15 +8,3 @@
 @import url("./gallery.css");
 @import url("./carousel.css");
 @import url("./card.css");
-
-* {
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  color: #1a1a1a;
-  line-height: 1;
-}
-
-button {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}

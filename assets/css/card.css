@@ -1,6 +1,6 @@
 .card {
-  width: 325px;
-  height: 205px;
+  aspect-ratio: 65 / 41;
+  width: 100%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -8,6 +8,7 @@
   border-radius: 20px;
   box-sizing: border-box;
   position: relative;
+  line-height: 1.2;
 }
 
 .card__link {
