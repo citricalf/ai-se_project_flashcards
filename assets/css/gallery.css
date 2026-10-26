@@ -13,7 +13,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 36px;
 }
 
 .gallery__list {
@@ -39,11 +38,12 @@
 }
 
 .gallery__practice-btn {
-  padding: 12px 16px;
+  padding: 12px 16px 14px;
   border-radius: 8px;
   background-color: #1a1a1a;
   color: #fff;
   font-size: 16px;
+  margin-bottom: 38px;
 }
 
 .gallery__practice-btn:hover:not(:disabled) {
