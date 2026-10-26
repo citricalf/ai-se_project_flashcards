@@ -7,7 +7,8 @@ const homeSection = document.querySelector("#home");
 const deckViewSection = document.querySelector("#deck-view");
 const carouselSection = document.querySelector("#carousel");
 const notFoundSection = document.querySelector("#not-found");
-const page = document.querySelector(".page__main-content");
+const pageElement = document.querySelector(".page");
+const mainContent = document.querySelector(".page__main-content");
 const practiceButton = deckViewSection.querySelector(".gallery__practice-btn");
 let currentDeck = null;
 
@@ -59,6 +60,7 @@ function renderHomeView() {
 }
 
 function renderNotFoundView() {
+  pageElement.classList.add("page_no-mobile-bar");
   notFoundSection.style.display = "flex";
 }
 
@@ -67,7 +69,8 @@ function router() {
   const routeMatch = hash.match(/^(deck|carousel)\/([^/]+)$/);
 
   if (hash === "home" || hash === "") {
-    page.classList.remove("page__main-content_location_carousel");
+    pageElement.classList.remove("page_no-mobile-bar");
+    mainContent.classList.remove("page__main-content_location_carousel");
     homeSection.style.display = "block";
     deckViewSection.style.display = "none";
     carouselSection.style.display = "none";
@@ -82,7 +85,7 @@ function router() {
       deckViewSection.style.display = "none";
       carouselSection.style.display = "none";
       renderNotFoundView();
-      page.classList.remove("page__main-content_location_carousel");
+      mainContent.classList.remove("page__main-content_location_carousel");
       return;
     }
 
@@ -90,13 +93,15 @@ function router() {
     notFoundSection.style.display = "none";
 
     if (route === "deck") {
-      page.classList.remove("page__main-content_location_carousel");
+      pageElement.classList.remove("page_no-mobile-bar");
+      mainContent.classList.remove("page__main-content_location_carousel");
       homeSection.style.display = "none";
       deckViewSection.style.display = "block";
       carouselSection.style.display = "none";
       renderDeckView(deck);
     } else {
-      page.classList.add("page__main-content_location_carousel");
+      pageElement.classList.add("page_no-mobile-bar");
+      mainContent.classList.add("page__main-content_location_carousel");
       homeSection.style.display = "none";
       deckViewSection.style.display = "none";
       carouselSection.style.display = "flex";
@@ -106,7 +111,7 @@ function router() {
     homeSection.style.display = "none";
     deckViewSection.style.display = "none";
     carouselSection.style.display = "none";
-    page.classList.remove("page__main-content_location_carousel");
+    mainContent.classList.remove("page__main-content_location_carousel");
     renderNotFoundView();
   }
 }

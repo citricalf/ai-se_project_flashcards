@@ -29,4 +29,7 @@
     flex-direction: column;
     justify-content: center;
   }
+  .page__main-content_location_carousel {
+    margin-top: 0;
+  }
 }

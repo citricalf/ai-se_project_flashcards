@@ -1,6 +1,7 @@
 import { hexToString, removeColorClasses } from "./colors.js";
 
 function renderDeckView(deck) {
+  document.querySelector(".page").classList.remove("page_no-mobile-bar");
   const deckViewSection = document.querySelector("#deck-view");
   const deckTitle = deckViewSection.querySelector(".gallery__title");
   const deckContainer = deckViewSection.querySelector(".gallery__list");
