@@ -20,7 +20,7 @@
     ". . flip-btn . .";
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 0 20px;
 }
 
 .carousel__card {
@@ -37,6 +37,10 @@
   margin: 32px 0;
   padding: 0 20px;
   text-align: center;
+  box-shadow:
+    0px 8px 24px 4px #00000040,
+    -1px 2px 2px 0px #ffffffb2 inset,
+    1px -1px 2px 0px #00000040 inset;
 }
 
 .carousel__card.card__carousel_color_white {
@@ -51,6 +55,7 @@
   border-radius: 8px;
   background-repeat: no-repeat;
   background-position: center;
+  box-shadow: 0px 1px 4px 0px #00000026;
 }
 
 .carousel__btn_type_left {
