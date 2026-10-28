@@ -3,6 +3,7 @@
   color: #1a1a1a;
   background-color: #ececec;
   max-width: 1440px;
+  min-width: 320px;
   padding: 20px 40px 32px;
   min-height: 100vh;
   margin: 0 auto;

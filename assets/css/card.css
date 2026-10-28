@@ -113,3 +113,8 @@
 .card__carousel_color_white {
   background-color: #fff;
 }
+
+/* When a card is flipped to show the answer in the deck view */
+.card_color_white .card__title {
+  font-weight: 500;
+}
