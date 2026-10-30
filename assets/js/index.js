@@ -89,7 +89,7 @@ function router() {
     homeSection.style.display = "none";
     deckViewSection.style.display = "none";
     carouselSection.style.display = "none";
-    newDeckSection.style.display = "block";
+    newDeckSection.style.display = "flex";
     notFoundSection.style.display = "none";
   } else if (routeMatch) {
     const [, route, deckID] = routeMatch;
