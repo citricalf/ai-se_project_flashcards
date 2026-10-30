@@ -51,7 +51,11 @@
 }
 
 .new-deck-view__color-input:checked {
-  border: 2px solid rgb(0 0 0 / 0.2);
+  border: 2px solid #1a1a1a;
+}
+
+.new-deck-view__color-input:hover {
+  border: 2px solid #1a1a1a50;
 }
 
 .new-deck-view__color-input_color_green {
@@ -83,6 +87,7 @@
   flex-direction: column;
   gap: 8px;
   font-size: 18px;
+  gap: 12px;
 }
 
 .new-deck-view__json-text {
@@ -92,7 +97,7 @@
   border: 0;
   border-radius: 0;
   resize: vertical;
-  font-family: monospace;
+  font-family: "DM Mono", monospace;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -116,4 +121,35 @@
 .new-deck-view__submit-btn:disabled {
   opacity: 30%;
   cursor: default;
+}
+
+.new-deck-view:focus {
+  border: 2px solid #1a1a1a20;
+}
+
+@media screen and (max-width: 600px) {
+  .page_new-deck-view .header {
+    padding-bottom: 36px;
+  }
+
+  .page_new-deck-view .page__main-content {
+    justify-content: flex-start;
+  }
+
+  .new-deck-view__title {
+    font-size: 32px;
+  }
+
+  .new-deck-view__color-picker {
+    margin: 20px 0 32px;
+  }
+
+  .new-deck-view__json-text {
+    height: 432px;
+    padding: 10px 12px;
+    border: 1px solid #1a1a1a20;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
 }

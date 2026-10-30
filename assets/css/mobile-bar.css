@@ -16,7 +16,8 @@
   }
 
   .gallery__new-card-btn,
-  .gallery__practice-btn {
+  .gallery__practice-btn,
+  .new-deck-view__submit-btn {
     position: fixed;
     padding: 12px 20px;
     bottom: 75px;
@@ -33,7 +34,8 @@
     font-weight: 500;
   }
 
-  .gallery__new-card-btn {
+  .gallery__new-card-btn,
+  .new-deck-view__submit-btn {
     width: calc(100% - 40px);
     max-width: 353px;
     left: 0;

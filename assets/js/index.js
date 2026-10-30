@@ -71,6 +71,7 @@ function renderNotFoundView() {
 }
 
 function router() {
+  pageElement.classList.remove("page_new-deck-view");
   const hash = window.location.hash.slice(1) || "home";
   const routeMatch = hash.match(/^(deck|carousel)\/([^/]+)$/);
 
@@ -84,12 +85,12 @@ function router() {
     notFoundSection.style.display = "none";
     renderHomeView();
   } else if (hash === "new-deck") {
-    pageElement.classList.add("page_no-mobile-bar");
+    pageElement.classList.add("page_new-deck-view");
     mainContent.classList.remove("page__main-content_location_carousel");
     homeSection.style.display = "none";
     deckViewSection.style.display = "none";
     carouselSection.style.display = "none";
-    newDeckSection.style.display = "flex";
+    newDeckSection.style.display = "block";
     notFoundSection.style.display = "none";
   } else if (routeMatch) {
     const [, route, deckID] = routeMatch;
