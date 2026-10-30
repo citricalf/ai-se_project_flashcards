@@ -6,16 +6,22 @@ import { renderDeckView } from "./deck-view.js";
 const homeSection = document.querySelector("#home");
 const deckViewSection = document.querySelector("#deck-view");
 const carouselSection = document.querySelector("#carousel");
+const newDeckSection = document.querySelector("#new-deck-view");
 const notFoundSection = document.querySelector("#not-found");
 const pageElement = document.querySelector(".page");
 const mainContent = document.querySelector(".page__main-content");
 const practiceButton = deckViewSection.querySelector(".gallery__practice-btn");
+const newDeckButton = document.querySelector("#home .gallery__new-card-btn");
 let currentDeck = null;
 
 practiceButton.addEventListener("click", () => {
   if (currentDeck) {
     window.location.hash = `#carousel/${currentDeck.id}`;
   }
+});
+
+newDeckButton.addEventListener("click", () => {
+  window.location.hash = "#new-deck";
 });
 
 function renderHomeView() {
@@ -74,8 +80,17 @@ function router() {
     homeSection.style.display = "block";
     deckViewSection.style.display = "none";
     carouselSection.style.display = "none";
+    newDeckSection.style.display = "none";
     notFoundSection.style.display = "none";
     renderHomeView();
+  } else if (hash === "new-deck") {
+    pageElement.classList.add("page_no-mobile-bar");
+    mainContent.classList.remove("page__main-content_location_carousel");
+    homeSection.style.display = "none";
+    deckViewSection.style.display = "none";
+    carouselSection.style.display = "none";
+    newDeckSection.style.display = "block";
+    notFoundSection.style.display = "none";
   } else if (routeMatch) {
     const [, route, deckID] = routeMatch;
     const deck = getDeckByID(deckID);
@@ -84,12 +99,14 @@ function router() {
       homeSection.style.display = "none";
       deckViewSection.style.display = "none";
       carouselSection.style.display = "none";
+      newDeckSection.style.display = "none";
       renderNotFoundView();
       mainContent.classList.remove("page__main-content_location_carousel");
       return;
     }
 
     currentDeck = deck;
+    newDeckSection.style.display = "none";
     notFoundSection.style.display = "none";
 
     if (route === "deck") {
@@ -111,6 +128,7 @@ function router() {
     homeSection.style.display = "none";
     deckViewSection.style.display = "none";
     carouselSection.style.display = "none";
+    newDeckSection.style.display = "none";
     mainContent.classList.remove("page__main-content_location_carousel");
     renderNotFoundView();
   }
