@@ -95,11 +95,15 @@
   height: 230px;
   padding: 8px;
   border: 0;
-  border-radius: 0;
+  border-radius: 8px;
   resize: vertical;
   font-family: "DM Mono", monospace;
   font-size: 14px;
   line-height: 1.5;
+}
+
+.new-deck-view__json-text:focus {
+  border: 1px solid #1a1a1a20;
 }
 
 .new-deck-view__json-text::placeholder {
@@ -116,6 +120,7 @@
   color: #fff;
   font-size: 18px;
   border-radius: 8px;
+  gap: 10px;
 }
 
 .new-deck-view__submit-btn:disabled {
@@ -128,10 +133,6 @@
 }
 
 @media screen and (max-width: 600px) {
-  .page_new-deck-view .header {
-    padding-bottom: 36px;
-  }
-
   .page_new-deck-view .page__main-content {
     justify-content: flex-start;
   }
