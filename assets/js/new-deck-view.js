@@ -124,7 +124,7 @@ function handleNewDeckViewSubmit(event) {
   };
 
   decks.push(deck);
-  window.location.hash = `deck/${deck.id}`;
+  window.location.hash = `deck/${deck._id}`;
 }
 
 newDeckViewForm.addEventListener("submit", handleNewDeckViewSubmit);
