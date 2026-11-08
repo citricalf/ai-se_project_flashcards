@@ -2,7 +2,8 @@ import { decks, getDeckByID } from "./decks.js";
 import { hexToString, removeColorClasses } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
-import { disableSubmitBtn } from "./new-deck-view.js";
+import { disableSubmitBtn, showError } from "./new-deck-view.js";
+import { getDecks } from "./api.js";
 
 const homeSection = document.querySelector("#home");
 const deckViewSection = document.querySelector("#deck-view");
@@ -65,7 +66,7 @@ function renderHomeView() {
     deckContainerEl.prepend(cloneEl);
   }
 
-  decks.forEach(renderDeckEl);
+  return renderDeckEl;
 }
 
 function renderNotFoundView() {
@@ -87,7 +88,6 @@ function router() {
     carouselSection.style.display = "none";
     newDeckSection.style.display = "none";
     notFoundSection.style.display = "none";
-    renderHomeView();
   } else if (hash === "new-deck") {
     pageElement.classList.add("page_new-deck-view");
     mainContent.classList.remove("page__main-content_location_carousel");
@@ -154,5 +154,16 @@ function router() {
   }
 }
 
-window.addEventListener("DOMContentLoaded", router);
+window.addEventListener("DOMContentLoaded", () => {
+  getDecks()
+    .then((decks) => {
+      decks.forEach(renderHomeView());
+    })
+    .catch(() => {
+      showError("Can't fetch decks");
+    })
+    .finally(() => {
+      router();
+    });
+});
 window.addEventListener("hashchange", router);

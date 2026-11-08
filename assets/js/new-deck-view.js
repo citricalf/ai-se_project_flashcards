@@ -129,4 +129,4 @@ function handleNewDeckViewSubmit(event) {
 
 newDeckViewForm.addEventListener("submit", handleNewDeckViewSubmit);
 
-export { disableSubmitBtn };
+export { disableSubmitBtn, showError };
