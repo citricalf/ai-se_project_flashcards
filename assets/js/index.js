@@ -10,6 +10,7 @@ const deckViewSection = document.querySelector("#deck-view");
 const carouselSection = document.querySelector("#carousel");
 const newDeckSection = document.querySelector("#new-deck-view");
 const notFoundSection = document.querySelector("#not-found");
+const aboutSection = document.querySelector("#about");
 
 const pageElement = document.querySelector(".page");
 const mainContent = document.querySelector(".page__main-content");
@@ -84,6 +85,7 @@ function router() {
   const routeMatch = hash.match(/^(deck|carousel)\/([^/]+)$/);
 
   if (hash === "home" || hash === "") {
+    pageElement.classList.remove("page_about-view");
     pageElement.classList.remove("page_no-mobile-bar");
     pageElement.classList.remove("page_new-deck-view");
     mainContent.classList.remove("page__main-content_location_carousel");
@@ -93,7 +95,21 @@ function router() {
     carouselSection.style.display = "none";
     newDeckSection.style.display = "none";
     notFoundSection.style.display = "none";
+    aboutSection.style.display = "none";
+  } else if (hash === "about") {
+    pageElement.classList.add("page_about-view");
+    pageElement.classList.remove("page_no-mobile-bar");
+    pageElement.classList.remove("page_new-deck-view");
+    mainContent.classList.remove("page__main-content_location_carousel");
+
+    homeSection.style.display = "none";
+    deckViewSection.style.display = "none";
+    carouselSection.style.display = "none";
+    newDeckSection.style.display = "none";
+    notFoundSection.style.display = "none";
+    aboutSection.style.display = "block";
   } else if (hash === "new-deck") {
+    pageElement.classList.remove("page_about-view");
     pageElement.classList.add("page_new-deck-view");
     mainContent.classList.remove("page__main-content_location_carousel");
 
@@ -102,6 +118,7 @@ function router() {
     carouselSection.style.display = "none";
     newDeckSection.style.display = "block";
     notFoundSection.style.display = "none";
+    aboutSection.style.display = "none";
     disableSubmitBtn();
   } else if (routeMatch) {
     const [, route, deckID] = routeMatch;
@@ -112,9 +129,11 @@ function router() {
       deckViewSection.style.display = "none";
       carouselSection.style.display = "none";
       newDeckSection.style.display = "none";
+      aboutSection.style.display = "none";
 
       renderNotFoundView();
 
+      pageElement.classList.remove("page_about-view");
       pageElement.classList.remove("page_new-deck-view");
       mainContent.classList.remove("page__main-content_location_carousel");
 
@@ -124,8 +143,10 @@ function router() {
     currentDeck = deck;
     newDeckSection.style.display = "none";
     notFoundSection.style.display = "none";
+    aboutSection.style.display = "none";
 
     if (route === "deck") {
+      pageElement.classList.remove("page_about-view");
       pageElement.classList.remove("page_no-mobile-bar");
       pageElement.classList.remove("page_new-deck-view");
       mainContent.classList.remove("page__main-content_location_carousel");
@@ -133,9 +154,11 @@ function router() {
       homeSection.style.display = "none";
       deckViewSection.style.display = "block";
       carouselSection.style.display = "none";
+      aboutSection.style.display = "none";
 
       renderDeckView(deck);
     } else {
+      pageElement.classList.remove("page_about-view");
       pageElement.classList.add("page_no-mobile-bar");
       pageElement.classList.remove("page_new-deck-view");
       mainContent.classList.add("page__main-content_location_carousel");
@@ -143,6 +166,7 @@ function router() {
       homeSection.style.display = "none";
       deckViewSection.style.display = "none";
       carouselSection.style.display = "flex";
+      aboutSection.style.display = "none";
 
       renderCarouselView(deck);
     }
@@ -151,7 +175,9 @@ function router() {
     deckViewSection.style.display = "none";
     carouselSection.style.display = "none";
     newDeckSection.style.display = "none";
+    aboutSection.style.display = "none";
 
+    pageElement.classList.remove("page_about-view");
     pageElement.classList.remove("page_new-deck-view");
     mainContent.classList.remove("page__main-content_location_carousel");
 

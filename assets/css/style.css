@@ -15,6 +15,18 @@ button:disabled {
   pointer-events: none;
 }
 
+pre {
+  display: block;
+  overflow-x: auto;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background-color: #1a1a1acc;
+  color: #fff;
+  font-family: "DM Mono", monospace;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
 .not-found {
   display: flex;
   flex-direction: column;

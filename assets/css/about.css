@@ -1,0 +1,27 @@
+.page_about-view .header {
+  padding-bottom: 60px;
+}
+
+.about {
+  width: 100%;
+  max-width: 670px;
+  margin: 0 auto;
+}
+
+.about__title {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.about__text {
+  font-size: 18px;
+  line-height: 1.35;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .about__title {
+    font-size: 30px;
+  }
+}

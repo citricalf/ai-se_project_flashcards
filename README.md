@@ -9,7 +9,7 @@ the deck. At the end of the displayed decks, there is a button to create a new d
 The top of the page has clickable sections that will redirect to their respective parts of the app.
 
 - 'Flash Cards' / 'My Decks' both show the home page, but 'My Decks' will focus on the portion of the page with all the decks displayed.
-- 'About' describes the general overview of the app, as well as its various sections (currently shows a 404 page).
+- 'About' describes the general overview of the app, as well as its various sections.
 
 The open deck view (after clicking on a given deck on the home page) displays all the flashcards of a given deck and an option to add a new card.
 There are buttons on each card that flip the card to show a question/answer and a delete button to remove the card from the deck. There is also
