@@ -1,5 +1,6 @@
-import { decks } from "./decks.js";
+import { fetchedDecks } from "./decks.js";
 import { openModal, closeModal } from "./modal.js";
+import { addDeck } from "./api.js";
 
 const HEX_DIGITS = /^[0-9a-fA-F]{6}$/;
 
@@ -14,22 +15,6 @@ const newDeckViewTextArea = newDeckViewForm.querySelector(
 const errorModalEl = document.querySelector("#error-modal");
 const errorBtn = errorModalEl.querySelector(".modal__close");
 const errorMsg = errorModalEl.querySelector(".modal__error");
-
-/**
- * Converts a string to a URL-safe slug: lowercase with any run of
- * non-alphanumeric characters replaced by a single hyphen, and no leading or
- * trailing hyphens.
- *
- * @param {string} str
- * @returns {string}
- */
-function slugify(str) {
-  return str
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
 
 /**
  * Returns a consistent lowercase hex color string with a leading "#".
@@ -116,15 +101,16 @@ function handleNewDeckViewSubmit(event) {
     return;
   }
 
-  const deck = {
-    id: `${slugify(jsonData.name)}-${Date.now()}`,
-    color: colorValue,
+  addDeck({
     name: jsonData.name,
     cards: jsonData.cards,
-  };
-
-  decks.push(deck);
-  window.location.hash = `deck/${deck._id}`;
+    color: colorValue,
+  })
+    .then((newDeck) => {
+      fetchedDecks.push(newDeck);
+      window.location.hash = `deck/${newDeck._id}`;
+    })
+    .catch(showError);
 }
 
 newDeckViewForm.addEventListener("submit", handleNewDeckViewSubmit);

@@ -1,9 +1,9 @@
-import { fetchedDecks, decks, getDeckByID, removeDeckByID } from "./decks.js";
+import { fetchedDecks, getDeckByID, removeDeckByID } from "./decks.js";
 import { hexToString, removeColorClasses } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
 import { disableSubmitBtn, showError } from "./new-deck-view.js";
-import { getDecks, deleteDeck } from "./api.js";
+import { getDecks, deleteDeck, addDeck } from "./api.js";
 
 const homeSection = document.querySelector("#home");
 const deckViewSection = document.querySelector("#deck-view");
