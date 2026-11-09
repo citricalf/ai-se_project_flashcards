@@ -16,4 +16,11 @@ function getDecks() {
   return fetch(`${baseUrl}/decks`, { headers }).then(processResponse);
 }
 
-export { getDecks };
+function deleteDeck(deckID) {
+  return fetch(`${baseUrl}/decks/${deckID}`, {
+    method: "DELETE",
+    headers: headers,
+  }).then(processResponse);
+}
+
+export { getDecks, deleteDeck };

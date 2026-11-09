@@ -1,9 +1,9 @@
-import { fetchedDecks, decks, getDeckByID } from "./decks.js";
+import { fetchedDecks, decks, getDeckByID, removeDeckByID } from "./decks.js";
 import { hexToString, removeColorClasses } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
 import { disableSubmitBtn, showError } from "./new-deck-view.js";
-import { getDecks } from "./api.js";
+import { getDecks, deleteDeck } from "./api.js";
 
 const homeSection = document.querySelector("#home");
 const deckViewSection = document.querySelector("#deck-view");
@@ -53,9 +53,14 @@ function renderHomeView() {
       currentDeck = item;
     });
 
-    const deleteDeck = cloneEl.querySelector(".card__delete-btn");
-    deleteDeck.addEventListener("click", () => {
-      cloneEl.remove();
+    const deleteDeckButton = cloneEl.querySelector(".card__delete-btn");
+    deleteDeckButton.addEventListener("click", () => {
+      deleteDeck(item._id)
+        .then(() => {
+          removeDeckByID(item._id);
+          cloneEl.remove();
+        })
+        .catch(() => showError("Can't delete deck"));
     });
 
     return cloneEl;
