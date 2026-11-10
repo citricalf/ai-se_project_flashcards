@@ -1,5 +1,11 @@
 import { hexToString, removeColorClasses } from "./colors.js";
 
+/**
+ * Renders a deck's cards in the carousel and configures its navigation controls.
+ *
+ * @param {{name: string, color: string, cards: Object[]}} deck - The deck to render
+ * @returns {void}
+ */
 function renderCarouselView(deck) {
   let currentIndex = 0;
   let showingQuestion = true;
@@ -16,15 +22,33 @@ function renderCarouselView(deck) {
   const cardColor = hexToString(deck.color);
   carouselCard.classList.add(`card__carousel_color_${cardColor}`);
 
+  /**
+   * Disables a carousel navigation button.
+   *
+   * @param {HTMLButtonElement} buttonEl - The button to disable
+   * @returns {void}
+   */
   function disableButton(buttonEl) {
     buttonEl.classList.add("carousel__btn_disabled");
     buttonEl.disabled = true;
   }
+
+  /**
+   * Enables a carousel navigation button.
+   *
+   * @param {HTMLButtonElement} buttonEl - The button to enable
+   * @returns {void}
+   */
   function enableButton(buttonEl) {
     buttonEl.classList.remove("carousel__btn_disabled");
     buttonEl.removeAttribute("disabled");
   }
 
+  /**
+   * Updates the enabled state of the carousel navigation buttons.
+   *
+   * @returns {void}
+   */
   function updateArrows() {
     if (currentIndex === 0) {
       disableButton(leftBtn);
@@ -39,6 +63,11 @@ function renderCarouselView(deck) {
     }
   }
 
+  /**
+   * Displays the current card and updates the carousel controls and title.
+   *
+   * @returns {void}
+   */
   function updateDisplay() {
     const currentCard = deck.cards[currentIndex];
     carouselCard.textContent = currentCard.question;

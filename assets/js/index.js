@@ -29,11 +29,22 @@ newDeckButton.addEventListener("click", () => {
   window.location.hash = "#new-deck";
 });
 
+/**
+ * Creates the deck-rendering callback used to populate the home view.
+ *
+ * @returns {function(Object): void} A function that adds a deck to the home view
+ */
 function renderHomeView() {
   const deckTemplateEl = document.querySelector("#deck-template");
   const deckContainerEl = homeSection.querySelector(".gallery__list");
   deckContainerEl.innerHTML = "";
 
+  /**
+   * Creates a deck list item with its title, color, and actions.
+   *
+   * @param {{name: string, color: string, cards: Object[], _id: string}} item - The deck to render
+   * @returns {HTMLLIElement} The populated deck list item
+   */
   function createDeckEl(item) {
     const cloneEl = deckTemplateEl.content.querySelector("li").cloneNode(true);
 
@@ -67,6 +78,12 @@ function renderHomeView() {
     return cloneEl;
   }
 
+  /**
+   * Adds a deck list item to the beginning of the home view.
+   *
+   * @param {Object} item - The deck to add
+   * @returns {void}
+   */
   function renderDeckEl(item) {
     const cloneEl = createDeckEl(item);
     deckContainerEl.prepend(cloneEl);
@@ -75,11 +92,21 @@ function renderHomeView() {
   return renderDeckEl;
 }
 
+/**
+ * Displays the not-found view and applies its page layout.
+ *
+ * @returns {void}
+ */
 function renderNotFoundView() {
   pageElement.classList.add("page_no-mobile-bar");
   notFoundSection.style.display = "flex";
 }
 
+/**
+ * Displays the view associated with the current URL hash.
+ *
+ * @returns {void}
+ */
 function router() {
   const hash = window.location.hash.slice(1) || "home";
   const routeMatch = hash.match(/^(deck|carousel)\/([^/]+)$/);

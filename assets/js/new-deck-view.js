@@ -8,9 +8,6 @@ const newDeckViewForm = document.querySelector(".new-deck-view__form");
 const newDeckViewSubmitBtn = document.querySelector(
   ".new-deck-view__submit-btn",
 );
-const newDeckViewTextArea = newDeckViewForm.querySelector(
-  ".new-deck-view__json-text",
-);
 
 const errorModalEl = document.querySelector("#error-modal");
 const errorBtn = errorModalEl.querySelector(".modal__close");
@@ -22,7 +19,7 @@ const errorMsg = errorModalEl.querySelector(".modal__error");
  * fallback if the value is missing or not a valid 6-digit hex.
  *
  * @param {string|undefined} color
- * @returns {string}
+ * @returns {string} A leading "#" + a lowercase hex color string
  */
 function normalizeColor(color) {
   if (!color) return "#64d583";
@@ -31,6 +28,12 @@ function normalizeColor(color) {
   return "#" + hex.toLowerCase();
 }
 
+/**
+ * Validates a deck name against the supported type and length constraints.
+ *
+ * @param {*} name - The value to validate
+ * @returns {string|null} The valid name, or null when it is invalid
+ */
 function validateName(name) {
   if (typeof name != "string" || name.length < 2 || name.length > 80) {
     return null;
@@ -38,6 +41,12 @@ function validateName(name) {
   return name;
 }
 
+/**
+ * Parses a JSON string, returning null when it is invalid.
+ *
+ * @param {string} jsonString - The JSON text to parse
+ * @returns {*|null} The parsed value, or null if parsing fails
+ */
 function parseJSON(jsonString) {
   try {
     return JSON.parse(jsonString);
@@ -46,6 +55,12 @@ function parseJSON(jsonString) {
   }
 }
 
+/**
+ * Displays an error message in the error modal.
+ *
+ * @param {string} message - The error message to display
+ * @returns {void}
+ */
 function showError(message) {
   errorMsg.textContent = message;
   openModal(errorModalEl);
@@ -55,10 +70,21 @@ errorBtn.addEventListener("click", () => {
   closeModal(errorModalEl);
 });
 
+/**
+ * Enables the new-deck form's submit button.
+ *
+ * @returns {void}
+ */
 function disableSubmitBtn() {
   newDeckViewSubmitBtn.disabled = false;
 }
 
+/**
+ * Validates and submits the new-deck form, then navigates to the created deck.
+ *
+ * @param {SubmitEvent} event - The form submission event
+ * @returns {void}
+ */
 function handleNewDeckViewSubmit(event) {
   event.preventDefault();
 

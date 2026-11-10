@@ -1,5 +1,11 @@
 import { hexToString, removeColorClasses } from "./colors.js";
 
+/**
+ * Renders a deck's cards and configures their flip and delete actions.
+ *
+ * @param {{name: string, color: string, cards: Object[]}} deck - The deck to render
+ * @returns {void}
+ */
 function renderDeckView(deck) {
   document.querySelector(".page").classList.remove("page_no-mobile-bar");
   const deckViewSection = document.querySelector("#deck-view");
