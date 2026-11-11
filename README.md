@@ -5,11 +5,11 @@ My first project in TripleTen's AI-Assisted Software Engineering program. It inc
 ## Features
 
 The home view displays decks of flashcards, each of which shows the total amount of cards in the deck and delete feature (trashbin icon) to remove
-the deck. At the end of the displayed decks, there is a button to create a new deck (WIP) with options to choose its color, name, and contents.
+the deck. At the end of the displayed decks, there is a button to create a new deck with options to choose its color, name, and contents.
 The top of the page has clickable sections that will redirect to their respective parts of the app.
 
-- 'Flash Cards' / 'My Decks' both show the home page, but 'My Decks' will focus on the portion of the page with all the decks displayed.
-- 'About' describes the general overview of the app, as well as its various sections.
+- 'Flash Cards' / 'My Decks' both show the home page with all decks laid out to view.
+- 'About' describes the general overview of the app, including a blueprint for creating decks using a JSON schema.
 
 The open deck view (after clicking on a given deck on the home page) displays all the flashcards of a given deck and an option to add a new card.
 There are buttons on each card that flip the card to show a question/answer and a delete button to remove the card from the deck. There is also
@@ -25,6 +25,9 @@ app will adjust size and the location of various buttons will change. The '+ New
 the page in the mobile view. In addition, the left/right buttons in the carousel view will move to the bottom of the flashcard to accommodate for a
 smaller viewport.
 
+Errors such as invalid deck data or failed API requests are shown to the user in a modal. Decks are retrieved, created, and deleted through a remote API
+that interacts with the app's database. JavaScript functions are documented with JSDoc comments, including descriptions, parameters, and return values.
+
 ## Technologies Used
 
 - HTML
@@ -37,5 +40,8 @@ Check out [this site](https://citricalf.github.io/ai-se_project_flashcards) on G
 
 ## Project Pitch Video
 
-Check out [this video](https://drive.google.com/file/d/1fTA2_46ByhC9EKLvKekpl_wVW0lEJrgB/view?usp=sharing), where I describe my project and some challenges
-I faced while building it.
+Check out these videos, where I describe my project
+and some challenges I faced while building it:
+
+- [Part 1 (Home/Deck/Carousel pages)](https://drive.google.com/file/d/1fTA2_46ByhC9EKLvKekpl_wVW0lEJrgB/view?usp=sharing)
+- [Part 2 (General overview & New Decks using API)](https://drive.google.com/file/d/1JSw6XAW7xZSTdSHdXn9gEPzuWzLtVc5G/view?usp=sharing)
