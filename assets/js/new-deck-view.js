@@ -133,7 +133,11 @@ function handleNewDeckViewSubmit(event) {
     color: colorValue,
   })
     .then((newDeck) => {
-      fetchedDecks.push(newDeck);
+      // use returned cards array when it's not empty, fall back to array from text when it is empty
+      fetchedDecks.push({
+        ...newDeck,
+        cards: newDeck.cards.length > 0 ? newDeck.cards : jsonData.cards,
+      });
       window.location.hash = `deck/${newDeck._id}`;
     })
     .catch(showError);
