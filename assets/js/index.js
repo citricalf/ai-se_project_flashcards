@@ -135,6 +135,8 @@ function router() {
     pageElement.classList.remove("page_new-deck-view");
     mainContent.classList.remove("page__main-content_location_carousel");
 
+    fetchedDecks.forEach(renderHomeView());
+
     showView(homeSection, "block");
   } else if (hash === "about") {
     pageElement.classList.add("page_about-view");
@@ -195,7 +197,6 @@ window.addEventListener("DOMContentLoaded", () => {
   getDecks()
     .then((decks) => {
       fetchedDecks.push(...decks);
-      decks.forEach(renderHomeView());
     })
     .catch(() => {
       showError("Can't fetch decks");
